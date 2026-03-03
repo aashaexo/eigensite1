@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-
+const { useState, useEffect } = React;
 const agents = [
   { id:1, name:"Sovereign Journalist",      desc:"Independent reporting agent that protects sources inside a TEE.", tags:["Privacy","Media"],         author:"Aasha",   link:"https://eigencloud.xyz", x:"https://x.com/eigencloud" },
   { id:2, name:"Verifiable Trading Agent",  desc:"Automated strategies with cryptographically enforced risk limits.", tags:["DeFi","Finance"],        author:"Marcus",  link:"https://eigencloud.xyz", x:"https://x.com/eigencloud" },
@@ -110,7 +109,7 @@ const AgentDot = () => (
   </svg>
 );
 
-export default function EigenEcosystem() {
+function EigenEcosystem() {
   const [tab, setTab]     = useState("Agents");
   const [hov, setHov]     = useState(null);
   const [catFilter, setCatFilter] = useState("All");
