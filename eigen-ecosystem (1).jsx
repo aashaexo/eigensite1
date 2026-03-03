@@ -117,6 +117,13 @@ function EigenEcosystem() {
 
   useEffect(() => { setTimeout(() => setReady(true), 60); }, []);
 
+  // Ensure X / Twitter embeds render when the tab changes
+  useEffect(() => {
+    if (window.twttr && window.twttr.widgets) {
+      window.twttr.widgets.load();
+    }
+  }, [tab]);
+
   const allCats = ["All", ...Array.from(new Set(ideas.map(i => i.cat)))];
   const filteredIdeas = catFilter === "All" ? ideas : ideas.filter(i => i.cat === catFilter);
 
@@ -387,25 +394,19 @@ function EigenEcosystem() {
               ))}
             </div>
 
-            {/* Community videos */}
+            {/* Embedded tweets */}
             <div style={{ marginBottom:28, padding:"24px 28px", border:"1px solid rgba(255,255,255,0.12)", background:"rgba(255,255,255,0.02)", borderRadius:2 }}>
-              <div style={{ fontFamily:"'IBM Plex Mono', monospace", fontSize:9, color:"rgba(255,255,255,0.3)", letterSpacing:".14em", marginBottom:10 }}>VIDEOS FROM BUILDERS</div>
+              <div style={{ fontFamily:"'IBM Plex Mono', monospace", fontSize:9, color:"rgba(255,255,255,0.3)", letterSpacing:".14em", marginBottom:10 }}>FROM THE BUILDER COMMUNITY</div>
               <div style={{ display:"grid", gridTemplateColumns:"repeat(2, minmax(0,1fr))", gap:16 }}>
-                <div style={{ borderRadius:2, overflow:"hidden", border:"1px solid rgba(255,255,255,0.1)", background:"#0a0a0a" }}>
-                  <iframe
-                    title="Eigen video - gajesh"
-                    src="https://twitframe.com/show?url=https://x.com/gajesh/status/2024630856892190854"
-                    style={{ width:"100%", height:380, border:"none" }}
-                    allow="autoplay; fullscreen; picture-in-picture"
-                  />
+                <div style={{ borderRadius:2, overflow:"hidden", border:"1px solid rgba(255,255,255,0.1)", background:"#0a0a0a", padding:12 }}>
+                  <blockquote className="twitter-tweet" data-theme="dark" style={{ margin:0 }}>
+                    <a href="https://x.com/gajesh/status/2024630856892190854"></a>
+                  </blockquote>
                 </div>
-                <div style={{ borderRadius:2, overflow:"hidden", border:"1px solid rgba(255,255,255,0.1)", background:"#0a0a0a" }}>
-                  <iframe
-                    title="Eigen video - zeeshan"
-                    src="https://twitframe.com/show?url=https://x.com/zeeshan_utd/status/2027375700618158483"
-                    style={{ width:"100%", height:380, border:"none" }}
-                    allow="autoplay; fullscreen; picture-in-picture"
-                  />
+                <div style={{ borderRadius:2, overflow:"hidden", border:"1px solid rgba(255,255,255,0.1)", background:"#0a0a0a", padding:12 }}>
+                  <blockquote className="twitter-tweet" data-theme="dark" style={{ margin:0 }}>
+                    <a href="https://x.com/zeeshan_utd/status/2027375700618158483"></a>
+                  </blockquote>
                 </div>
               </div>
             </div>
